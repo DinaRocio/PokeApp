@@ -12,7 +12,7 @@ export default function Template({ children }: Props) {
       <Nav />
       <div className="page-content">{children}</div>
       <Footer>
-        <h3>Make with ❤️ for D-Una Team</h3>
+        <h3>Make with ❤️ by Dina Rocio </h3>
         <a href="https://github.com/DinaRocio">About Me</a>
       </Footer>
     </Container>

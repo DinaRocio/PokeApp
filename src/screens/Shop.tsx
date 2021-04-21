@@ -28,7 +28,7 @@ export default function Shop() {
 
   const renderPageNumbers = pages.map((num: number) => {
     return (
-      <li key={num} id={number} onClick={handleClick}>
+      <li key={num} onClick={handleClick}>
         {num}
       </li>
     )
