@@ -91,7 +91,7 @@ export function ErrorPage() {
         </ErrorText>
 
         <ErrorButton>
-          <a href="#">Regresar</a>
+          <a href="/">Regresar</a>
         </ErrorButton>
       </Layer>
     </Container>
