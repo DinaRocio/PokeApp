@@ -77,7 +77,7 @@ const RocketTeam = styled.img`
     width: 33vw;
   }
 `;
-export function ErrorPage() {
+export function _error() {
   return (
     <Container>
       <ErrorNumber>

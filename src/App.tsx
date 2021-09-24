@@ -4,7 +4,7 @@ import Shop from "./screens/Shop";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./screens/Home";
 import ShowPokemon from "./screens/ShowPokemon";
-import { ErrorPage } from "./screens/ErrorPage";
+import { _error } from "./screens/_error";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/about" component={About} />
           <Route path="/shop" exact component={Shop} />
           <Route path="/shop/:id" component={ShowPokemon} />
-          <Route component={ErrorPage} />
+          <Route component={_error} />
         </Switch>
       </div>
     </Router>
