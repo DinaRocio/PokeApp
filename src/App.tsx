@@ -15,7 +15,7 @@ function App() {
           <Route path="/about" component={About} />
           <Route path="/shop" exact component={Shop} />
           <Route path="/shop/:id" component={ShowPokemon} />
-          <Route component={_error} />
+          <Route path="/error" component={_error} />
         </Switch>
       </div>
     </Router>
