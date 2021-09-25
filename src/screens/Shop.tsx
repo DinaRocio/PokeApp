@@ -5,93 +5,65 @@ import styled from "@emotion/styled";
 import pb from "../assets/pokeball.png";
 import { BASE_URI } from "../app/config";
 
+interface Items {
+  name: string;
+  url: string;
+}
+
 export default function Shop() {
   const [state, setState] = useState("loading");
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<Items[]>([]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
-  const pages = [];
-  for (let i = 1; i <= Math.ceil(items.length / itemsPerPage); i++) {
-    pages.push(i)
+  const fetchItems = async () => {
+    const data = await fetch(`${BASE_URI}pokemon?limit=100&offset=140`);
+
+    await setTimeout(function () {}, 2000);
+
+    const items = await data.json();
+    setItems(items.results);
+    setState("");
+  };
+  console.log(items);
+  function findId(url: string) {
+    let reg = /\d+(?!.*\d)/;
+    let arr = reg.exec(url);
+    if (arr !== null) {
+      return arr[0];
+    }
   }
+  return (
+    <Template>
+      <>
+        {state}
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+        <PokeContent>
+          {items.map((item) => (
+            <Link to={`/shop/${findId(item.url)}`} key={findId(item.url)}>
+              <PokeCard>
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${findId(
+                    item.url
+                  )}.svg`}
+                  alt="pokemon"
+                />
 
-  const handleClick = (event: any) => {
-    setCurrentPage(event.target.id)
-  }
+                <Poketitle>
+                  <h1>{item.name}</h1>
 
-  const renderPageNumbers = pages.map((num: number) => {
-    return (
-      <li key={num} onClick={handleClick}>
-        {num}
-      </li>
-    )
-  })
-
- 
-
-useEffect(() => {
-  fetchItems();
-}, []);
-
-
-const fetchItems = async () => {
-  const data = await fetch(`${BASE_URI}pokemon?limit=100&offset=140`);
-
-  await setTimeout(function () {
-  }, 2000);
-
-  const items = await data.json();
-  setItems(items.results);
-  setState("");
-};
-
-function findId(url: string) {
-  let reg = /\d+(?!.*\d)/;
-  let arr = reg.exec(url);
-  if (arr !== null) {
-    return arr[0];
-  }
-
-}
-
-return (
-  <Template>
-    <>
-      {state}
-      <PageNumbers >
-        {renderPageNumbers}
-      </PageNumbers>
-
-      <PokeContent>
-        {currentItems.map((item: { name: string, url: string }) => (
-          <Link to={`/shop/${findId(item.url)}`} key={findId(item.url)}>
-            <PokeCard>
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${findId(
-                  item.url
-                )}.svg`}
-                alt="pokemon"
-              />
-
-              <Poketitle>
-                <h1>{item.name}</h1>
-
-                <img src={pb} alt="pokeball" />
-              </Poketitle>
-            </PokeCard>
-          </Link>
-        ))}
-      </PokeContent>
-    </>
-  </Template>
-);
+                  <img src={pb} alt="pokeball" />
+                </Poketitle>
+              </PokeCard>
+            </Link>
+          ))}
+        </PokeContent>
+      </>
+    </Template>
+  );
 }
 
 const fontFamily2 = "Bubblegum Sans, cursive";
@@ -143,13 +115,13 @@ const Poketitle = styled.div`
   }
 `;
 const PageNumbers = styled.ul`
-list-style: none;
-display: flex;
-justify-content: center;
-align-items: center;
-& > li{
-  padding: 10px;
-  border: 1px solid white;
-  cursor: pointer;
-}
-`
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > li {
+    padding: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+  }
+`;
