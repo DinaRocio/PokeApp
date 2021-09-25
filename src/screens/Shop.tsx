@@ -28,7 +28,6 @@ export default function Shop() {
     setItems(items.results);
     setState("");
   };
-  console.log(items);
   function findId(url: string) {
     let reg = /\d+(?!.*\d)/;
     let arr = reg.exec(url);
@@ -112,16 +111,5 @@ const Poketitle = styled.div`
   & > img {
     width: 50px;
     height: 50px;
-  }
-`;
-const PageNumbers = styled.ul`
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  & > li {
-    padding: 10px;
-    border: 1px solid white;
-    cursor: pointer;
   }
 `;
