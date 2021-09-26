@@ -6,11 +6,7 @@ import { BASE_URI } from "../app/config";
 import TypeIcons from "../UI/TypeIcons";
 import { useParams } from "react-router-dom";
 
-
-
 export default function ShowPokemon() {
-
-
   const [item, setItem] = useState({
     name: "pokemon",
     weight: 0,
@@ -21,7 +17,7 @@ export default function ShowPokemon() {
     held_items: [],
   });
 
-  const { id }: { id: string } = useParams()
+  const { id }: { id: string } = useParams();
 
   const fetchPokemonDetail = async () => {
     const fetchItem = await fetch(`${BASE_URI}pokemon/${id}/`);
@@ -49,7 +45,9 @@ export default function ShowPokemon() {
 
       <PokeContent>
         <img
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`} alt="logo"
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
+          alt="logo"
+          className="poke-profile"
         />
         <PokeInfo>
           <PokeSection>
@@ -89,9 +87,17 @@ export default function ShowPokemon() {
 
               <ul className="right-side">
                 <SpecialTitle>ITEMS</SpecialTitle>
-                {item.held_items?.map(({ item: { name } }) => (
-                  <li key={name}>{name}</li>
-                ))}
+                {item.held_items.length ? (
+                  item.held_items?.map(({ item: { name } }) => (
+                    <li key={name}>{name}</li>
+                  ))
+                ) : (
+                  <i
+                    className="em em-no_entry"
+                    aria-role="presentation"
+                    aria-label="NO ENTRY"
+                  ></i>
+                )}
               </ul>
             </div>
           </PokeSection>
@@ -172,6 +178,13 @@ const PokeContent = styled.div`
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     &:hover {
       transform: scale(1.3);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+    .poke-profile {
+      height: 360px;
     }
   }
 `;

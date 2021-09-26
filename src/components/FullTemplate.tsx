@@ -5,8 +5,8 @@ import Nav from "./Nav";
 
 type Props = {
   children: JSX.Element | JSX.Element[];
-  id: number
-}
+  id: number;
+};
 
 export default function FullTemplate({ children, id }: Props) {
   let history = useHistory();
@@ -16,7 +16,7 @@ export default function FullTemplate({ children, id }: Props) {
   };
 
   const handleNextNavigation = () => {
-    history.push(`/shop/${+id + 1}`); 
+    history.push(`/shop/${+id + 1}`);
   };
 
   return (
@@ -31,14 +31,6 @@ export default function FullTemplate({ children, id }: Props) {
             onClick={handleBackNavigation}
           />
         </div>
-        <div className="action-close">
-          <PokeIcons
-            type="close"
-            fill="black"
-            size={33}
-            onClick={() => history.push("/shop")}
-          />
-        </div>
         {children}
         <div className="action-right">
           <PokeIcons
@@ -50,7 +42,7 @@ export default function FullTemplate({ children, id }: Props) {
         </div>
       </div>
       <Footer>
-        <h3>Make with ❤️ for D-Una Team</h3>
+        <h3>Make with ❤️ for you</h3>
         <a href="https://github.com/DinaRocio">About Me</a>
       </Footer>
     </Container>
@@ -74,22 +66,19 @@ const Container = styled.div`
     &::-webkit-scrollbar {
       display: none;
     }
-    .action-close {
-      position: absolute;
-      right: 0;
-      cursor: pointer;
-    }
     .action-right {
       position: absolute;
       right: 0;
       top: 50%;
       cursor: pointer;
+      z-index: 200;
     }
     .action-left {
       position: absolute;
       left: 0;
       top: 50%;
       cursor: pointer;
+      z-index: 200;
     }
   }
 `;
