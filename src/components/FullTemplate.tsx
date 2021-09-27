@@ -67,18 +67,22 @@ const Container = styled.div`
       display: none;
     }
     .action-right {
+      background: white;
+      border-radius: 9px;
       position: absolute;
       right: 0;
       top: 50%;
       cursor: pointer;
-      z-index: 200;
+      z-index: 2;
     }
     .action-left {
+      background: white;
+      border-radius: 9px;
       position: absolute;
       left: 0;
       top: 50%;
       cursor: pointer;
-      z-index: 200;
+      z-index: 2;
     }
   }
 `;

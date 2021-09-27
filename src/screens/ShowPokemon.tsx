@@ -171,7 +171,7 @@ const PokeContent = styled.div`
   align-items: center;
   gap: 100px;
   width: 100%;
-  & > img {
+  .poke-profile {
     height: 450px;
     z-index: 1;
     transition: transform 0.2s;
@@ -184,7 +184,7 @@ const PokeContent = styled.div`
     flex-direction: column;
     gap: 10px;
     .poke-profile {
-      height: 360px;
+      height: 350px;
     }
   }
 `;
