@@ -23,8 +23,6 @@ export const ModalBackground = styled.div`
 `;
 export const ModalContent = styled.div`
   padding: 20px;
-  height: 36%;
-
   background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
   box-shadow: 4px 4px 24px rgba(1, 17, 38, 0.2);
   border-radius: 0px 0px 16px 16px;

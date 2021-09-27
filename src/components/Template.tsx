@@ -13,12 +13,15 @@ export default function Template({ children }: Props) {
       <Footer>
         <span className="made-by-link">
           <h3>Make with ❤️ by</h3>
-          <a href="https://github.com/DinaRocio" className="my-name-link">
+          <a
+            href="https://www.linkedin.com/in/dinavillanueva/o"
+            className="my-name-link"
+          >
             Dina Rocio
           </a>
         </span>
         <div className="about-me-link">
-          <a href="https://github.com/DinaRocio">About Me</a>
+          <a href="https://www.linkedin.com/in/dinavillanueva/">About Me</a>
         </div>
       </Footer>
     </Container>

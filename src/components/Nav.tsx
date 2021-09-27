@@ -30,10 +30,13 @@ export default function Nav() {
             <CloseIcon className="close-icon" onClick={onClose} />
 
             <ModalOptions>
+              <Link to="/about">
+                <h3>About</h3>
+              </Link>
               <Link to="/shop">
                 <h3>Shop</h3>
               </Link>
-              <a href="https://github.com/DinaRocio">
+              <a href="https://www.linkedin.com/in/dinavillanueva/">
                 <h3>About me</h3>
               </a>
               <a href="https://github.com/DinaRocio/PokeApp">

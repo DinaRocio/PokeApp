@@ -1,9 +1,18 @@
+import styled from "@emotion/styled";
 import Template from "../components/Template";
 
-export default function About (){
+export default function About() {
   return (
     <Template>
-      <h1>About</h1>
+      <Building>En construcción</Building>
+      <i
+        className="em em-construction"
+        aria-role="presentation"
+        aria-label="CONSTRUCTION SIGN"
+      ></i>
     </Template>
-  )
+  );
 }
+const Building = styled.h1`
+  color: #fff;
+`;
