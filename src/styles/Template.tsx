@@ -65,6 +65,7 @@ export const Footer = styled.div`
     justify-content: center;
     align-items: center;
     padding: 15px;
+    z-index: 0;
     .about-me-link {
       display: none;
     }
